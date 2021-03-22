@@ -14,5 +14,11 @@ namespace FluentApi.Web.Models
         public DateTime? BirthDay { get; set; }
         public IList<Adress> Adresses { get; set; }
         public Gender Gender { get; set; }
+
+        public CreditCard CreditCard { get; set; }
+        public string GetFullName()//Automapper da metotlar eşleştirmeden gelmesi için başına Get yazmamız gerekiyor ana modelde sonrası aynı isim olmalı
+        {//Metot yazmak veritabanını etkilemez ve veritabanına yansımaz
+            return $"{Name}-{Email}-{Age}";
+        }
     }
 }

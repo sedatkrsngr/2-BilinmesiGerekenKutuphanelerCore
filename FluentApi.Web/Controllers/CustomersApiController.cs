@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FluentApi.Web.Models;
 using FluentValidation;
+using AutoMapper;
+using FluentApi.Web.DTOs;
 
 namespace FluentApi.Web.Controllers
 {
@@ -16,18 +18,22 @@ namespace FluentApi.Web.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IValidator<Customer> _customerValidator;
+        private readonly IMapper _mapper;
 
-        public CustomersApiController(AppDbContext context, IValidator<Customer> customerValidator)
+
+        public CustomersApiController(AppDbContext context, IValidator<Customer> customerValidator,IMapper mapper)
         {
             _context = context;
             _customerValidator = customerValidator;
+            _mapper = mapper;
         }
 
         // GET: api/CustomersApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
-        {
-            return await _context.Customers.ToListAsync();
+        public async Task<ActionResult<IEnumerable<CustomerDTO>>> GetCustomers()
+        {//Eski yapıyı bu şekilde DTO nesnesine çeviririz.
+            List<Customer> customers = await _context.Customers.ToListAsync();
+            return _mapper.Map<List<CustomerDTO>>(customers);
         }
 
         // GET: api/CustomersApi/5

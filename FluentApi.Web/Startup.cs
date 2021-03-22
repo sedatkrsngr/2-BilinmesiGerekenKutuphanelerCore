@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using AutoMapper;
 namespace FluentApi.Web
 {
     public class Startup
@@ -49,6 +49,9 @@ namespace FluentApi.Web
                 options.SuppressModelStateInvalidFilter = true;  //Api oluþturduðumuzda artýk bizim yaptýðýmýz validator mesajýný dönmek için yaparýz.
 
             });
+
+            //Automapper kullanmak için 
+            services.AddAutoMapper(typeof(Startup));//I mapper kullandýðýmýzda burasý çalýþacak
 
         }
 

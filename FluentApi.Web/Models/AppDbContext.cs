@@ -15,7 +15,7 @@ namespace FluentApi.Web.Models
         //Startupta ilgili context ayarını yaptıktan sonra  package-manage-consele ekranında  add-migration Initial-1 diyerek başladık  Inıtial-1 bizim verdiğimiz bir isim sırasıyla -2,-3
         //remove-migration ise son migrationu geri alır
         //Update-Database dedikten sonra Controller->entity framwork-Customer-Appdbcontext diyip hazır şablonu ekledik.
-        
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
@@ -23,6 +23,9 @@ namespace FluentApi.Web.Models
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Adress> Adresses { get; set; }
+        public DbSet<CreditCard>  CreditCards { get; set; }
 
+
+       
     }
 }
