@@ -23,6 +23,8 @@ namespace FluentApi.Web.FluentValidators
             }).WithMessage("Yaşınız 18 yaşından büyük olmalıdır!");
 
             RuleForEach(x => x.Adresses).SetValidator(new AdressValidator());//İlişkili olduğu tablonun hatalarını ilişkili Customer üzerinden adress kontrolünü yaparız IValidator ile
+
+            RuleFor(x => x.Gender).IsInEnum().WithMessage("{PropertyName} Erkek için 1 Kadın için 2 olmalıdır!");//IsInEnum Enum değerleri o enum içerisinden ayrı olursa hata dönderir.
         }
     }
 }

@@ -43,12 +43,13 @@ namespace FluentApi.Web
                 options.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
 
-            //services.Configure<ApiBehaviorOptions>(options=> {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
 
-            //    options.SuppressModelStateInvalidFilter = true;  //Api oluþturduðumuzda artýk bizim yaptýðýmýz hata mesajýný dönmek için yaparýz.
-            
-            //});
-            
+                options.SuppressModelStateInvalidFilter = true;  //Api oluþturduðumuzda artýk bizim yaptýðýmýz validator mesajýný dönmek için yaparýz.
+
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,5 +13,6 @@ namespace FluentApi.Web.Models
         public int Age { get; set; }
         public DateTime? BirthDay { get; set; }
         public IList<Adress> Adresses { get; set; }
+        public Gender Gender { get; set; }
     }
 }
