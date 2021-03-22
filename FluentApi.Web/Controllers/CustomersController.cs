@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FluentApi.Web.Models;
+using FluentValidation;
+using FluentApi.Web.FluentValidators;
 
 namespace FluentApi.Web.Controllers
 {
     public class CustomersController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IValidator<Customer> _customerValitator;//modalstate.isvalid yerine kullanmak için
 
-        public CustomersController(AppDbContext context)
+        public CustomersController(AppDbContext context, IValidator<Customer> customerValitator)
         {
             _context = context;
+            _customerValitator = customerValitator;
         }
 
         // GET: Customers
@@ -53,9 +57,19 @@ namespace FluentApi.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Email,Age")] Customer customer)
+        public async Task<IActionResult> Create( Customer customer)//Bind sadece bu alanları al demek [Bind("Id,Name,Email,Age,BirthDay")]
         {
-            if (ModelState.IsValid)
+            //    if (ModelState.IsValid)
+            //    {
+            //        _context.Add(customer);
+            //        await _context.SaveChangesAsync();
+            //        return RedirectToAction(nameof(Index));
+            //    }
+
+            //CustomerValidator _customerValitator = new CustomerValidator(); // bu şekil de kullanabiliriz. Ama her bir tane için Valitator kullanmak sakıncalı Bu class AbstractValidator'dan dolaylı IValidatordan kalıtım alıyor aynı zamanda
+            //_customerValitator.Validate(customer).IsValid;
+
+            if (_customerValitator.Validate(customer).IsValid)//ModelStateden avantajı hataları burada da tutabiliyor
             {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();

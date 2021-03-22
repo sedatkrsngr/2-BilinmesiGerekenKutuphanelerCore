@@ -22,6 +22,7 @@ namespace FluentApi.Web.Models
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Adress> Adresses { get; set; }
 
     }
 }

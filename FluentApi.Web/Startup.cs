@@ -5,6 +5,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,12 @@ namespace FluentApi.Web
             services.AddControllersWithViews().AddFluentValidation(options => {
                 options.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
+
+            //services.Configure<ApiBehaviorOptions>(options=> {
+
+            //    options.SuppressModelStateInvalidFilter = true;  //Api oluþturduðumuzda artýk bizim yaptýðýmýz hata mesajýný dönmek için yaparýz.
+            
+            //});
             
         }
 
