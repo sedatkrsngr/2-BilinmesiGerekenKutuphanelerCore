@@ -1,0 +1,49 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:54017",
+      "sslPort": 44310
+    }
+  },
+  "profiles": {
+    "Development": { //Development ortamı için bu adı verdik
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development" //Hangi ortamda çalışacağı bilgisini burdan veririz. Yukarda hangisi ile çalıştırırsak o ortam çalışır
+      }
+    },
+    "Production": { //Production ortamı için bu adı verdik her ismi verebiliriz
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production" //Hangi ortamda çalışacağı bilgisini burdan veririz. Yukarda hangisi ile çalıştırırsak o ortam çalışır
+      }
+    },
+    "Staging": { //Staging ortamı için bu adı verdik
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging" //Hangi ortamda çalışacağı bilgisini burdan veririz. Yukarda hangisi ile çalıştırırsak o ortam çalışır
+      }
+    },
+    "Sedat": { //Staging ortamı için bu adı verdik
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Sedat" //Kendi Ortamımı da oluşturabiliyorum
+      }
+    },
+    "EnvironmentApp.Web": { //kestell burası
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
